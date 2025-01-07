@@ -104,7 +104,7 @@ public class MenuCustomer {
                         customerService.viewListService();
                         break;
                     case 2:
-
+                        customerService.addBooking();
                         break;
                     case 0:
                         System.out.println("Quay lại menu khách hàng");

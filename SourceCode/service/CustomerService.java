@@ -1,7 +1,9 @@
 package service;
 
+import data.BookingData;
 import data.CustomerData;
 import data.ServiceData;
+import entities.Booking;
 import entities.Customer;
 import entities.Service;
 import utils.Validation;
@@ -12,12 +14,12 @@ public class CustomerService {
     private Scanner scanner;
     private List<Service> services;
     private List<Customer> customers;
-
+    private List<Booking> bookings;
     public CustomerService() {
         this.scanner = new Scanner(System.in);
         this.services = ServiceData.loadServices();
         this.customers = CustomerData.loadCustomer();
-
+        this.bookings = BookingData.loadBookings();
     }
     //Phuong thuc them thong tin khach hang moi
     public void addCustomerInfo() {
@@ -157,12 +159,29 @@ public class CustomerService {
 
     //Phuong thuc dat lich dich vu
     public void addBooking() {
-
+        System.out.println("Moi ban nhap id khach hang: ");
+        String customerId = scanner.nextLine();
+        Customer customer = findCustomerById(customerId);
+        if (customer == null) {
+            System.out.println("Ban hay kiem tra lai ma ID khach hang.");
+            return;
+        }
+        System.out.println("Moi ban nhap id dich vu: ");
+        String serviceId = scanner.nextLine();
+        Service service = findServiceById(serviceId);
+        if (service == null) {
+            System.out.println("Ban hay kiem tra lai ma ID dich vu.");
+            return;
+        }
+        Booking booking = new Booking(customerId,serviceId);
+        bookings.add(booking);
+        BookingData.saveBooking(bookings);
+        System.out.println("Ban da dat dich vu thanh cong.");
     }
 
-    private Customer findCustomerByPhone(String phone) {
+    private Customer findCustomerById(String customerId) {
         for (Customer customer : customers) {
-            if (customer.getPhone().equals(phone)) {
+            if (customer.getCustomerId().equals(customerId)) {
                 return customer;
             }
         }

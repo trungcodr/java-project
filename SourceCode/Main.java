@@ -11,11 +11,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        List<Customer> customers = CustomerData.loadCustomer();
+//        List<Customer> customers = CustomerData.loadCustomer();
 
-        if (customers.isEmpty()) {
-            System.out.println("");
-        }
+
 
         Menu menu = new Menu();
         menu.displayMainMenu();

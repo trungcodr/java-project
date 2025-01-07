@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static entities.Booking.fromString;
+
 
 public class BookingData {
     private static final String BOOKING_FILE_NAME = "bookings.txt";
@@ -21,7 +21,18 @@ public class BookingData {
         try (BufferedReader br = new BufferedReader(new FileReader(BOOKING_FILE_NAME))) {
             String line;
             while ((line = br.readLine()) != null) {
-                bookings.add(fromString(line));
+//                bookings.add(fromString(line));
+                String[] parts = line.split(",");
+                String bookingId = parts[0];
+                String customerId = parts[1];
+                String serviceId = parts[2];
+                LocalDateTime bookingDateTime = LocalDateTime.parse(parts[3],DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                BookingStatus status = BookingStatus.valueOf(parts[4]);
+                Booking booking = new Booking(customerId,serviceId);
+                booking.setBookingId(bookingId);
+//                booking.setBookingDateTime(bookingDateTime);
+                booking.setStatus(status);
+                bookings.add(booking);
             }
         } catch (IOException e) {
             System.out.println("Không thể đọc tệp đặt lịch: " + e.getMessage());
