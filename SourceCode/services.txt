@@ -1,0 +1,3 @@
+S1,Tia long ,100000
+S2,Tam say,250000
+S3,Tiem phong,500000

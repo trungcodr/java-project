@@ -1,0 +1,3 @@
+E1,sonmc,22,3020000
+E2,Ngo Minh Nguyet,21,3250000
+E3,Ta Dinh Thuong,25,3600000
