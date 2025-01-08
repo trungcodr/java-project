@@ -18,19 +18,23 @@ public class BookingData {
     //Doc danh sach dat lich tu tep
     public static List<Booking> loadBookings() {
         List<Booking> bookings = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         try (BufferedReader br = new BufferedReader(new FileReader(BOOKING_FILE_NAME))) {
             String line;
             while ((line = br.readLine()) != null) {
-//                bookings.add(fromString(line));
                 String[] parts = line.split(",");
+                if (parts.length != 5) {
+                    System.out.println("Du lieu khong hop le: " + line);
+                    continue;
+                }
                 String bookingId = parts[0];
                 String customerId = parts[1];
                 String serviceId = parts[2];
-                LocalDateTime bookingDateTime = LocalDateTime.parse(parts[3],DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                LocalDateTime bookingDateTime = LocalDateTime.parse(parts[3],formatter);
                 BookingStatus status = BookingStatus.valueOf(parts[4]);
                 Booking booking = new Booking(customerId,serviceId);
                 booking.setBookingId(bookingId);
-//                booking.setBookingDateTime(bookingDateTime);
+                booking.setBookingDateTime(bookingDateTime);
                 booking.setStatus(status);
                 bookings.add(booking);
             }

@@ -61,20 +61,10 @@ public class Booking {
 
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         return bookingId + "," + customerId + "," + serviceId + "," + bookingDateTime.format(formatter) + "," + status;
     }
 
-//    public static Booking fromString(String bookingString) {
-//        String[]parts = bookingString.split(",");
-//        if (parts.length != 5) {
-//            throw new IllegalArgumentException("Invalid booking string: " + bookingString);
-//        }
-//        Booking booking = new Booking(parts[1], parts[2]);
-//        booking.bookingId = parts[0];
-//        booking.bookingDateTime = LocalDateTime.parse(parts[3], DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-//        booking.status = BookingStatus.valueOf(parts[4]);
-//        return booking;
-//    }
+
 
 }
