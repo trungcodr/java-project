@@ -23,3 +23,8 @@ Mô tả: Chương trình quản lý cửa hàng chăm sóc thú cưng.
 
 
 ![usecase drawio](https://github.com/user-attachments/assets/10eacd7e-499e-4f48-9b45-17c507a33d94)
+
+- ClassDiagram:
+
+
+![classdiagram drawio](https://github.com/user-attachments/assets/7ff4357a-61b8-4f9e-8fb3-1cad61e0819b)
