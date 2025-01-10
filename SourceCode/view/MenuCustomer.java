@@ -13,18 +13,11 @@ import java.util.Scanner;
 
 public class MenuCustomer {
     private Scanner scanner;
-
-
     private CustomerService customerService;
-
-
-
 
     public MenuCustomer() {
         this.scanner = new Scanner(System.in);
         this.customerService = new CustomerService();
-
-
     }
 
     public void displayMenuCustomer(){
@@ -66,7 +59,7 @@ public class MenuCustomer {
     //Menu con quan ly thong tin ca nhan
     private void managePersonalInfo(){
         while (true) {
-            System.out.println("");
+            System.out.println("------------------------------------------");
             System.out.println("1. Thêm thông tin cá nhân");
             System.out.println("2. Cập nhật thông tin cá nhân");
             System.out.println("0. Quay lại");
@@ -92,9 +85,11 @@ public class MenuCustomer {
     //Menu con dat lich dich vu
     private void orderServiceMenu() {
         while (true){
-            System.out.println("");
+            System.out.println("------------------------------------------");
             System.out.println("1. Xem danh sách dịch vụ");
             System.out.println("2. Đặt dịch vụ");
+            System.out.println("3. Xem danh sách đặt lịch");
+            System.out.println("4. Hủy dịch vụ");
             System.out.println("0. Quay lại");
             System.out.print("Mời bạn nhập lựa chọn: ");
             int choose = Integer.parseInt(scanner.nextLine());
@@ -105,6 +100,12 @@ public class MenuCustomer {
                         break;
                     case 2:
                         customerService.addBooking();
+                        break;
+                    case 3:
+                        customerService.viewBooking();
+                        break;
+                    case 4:
+                        customerService.cancelBooking();
                         break;
                     case 0:
                         System.out.println("Quay lại menu khách hàng");

@@ -4,6 +4,7 @@ import data.BookingData;
 import data.CustomerData;
 import data.ServiceData;
 import entities.Booking;
+import entities.BookingStatus;
 import entities.Customer;
 import entities.Service;
 import utils.Validation;
@@ -15,6 +16,7 @@ public class CustomerService {
     private List<Service> services;
     private List<Customer> customers;
     private List<Booking> bookings;
+
     public CustomerService() {
         this.scanner = new Scanner(System.in);
         this.services = ServiceData.loadServices();
@@ -81,11 +83,11 @@ public class CustomerService {
         System.out.println("4. Địa chỉ khách hàng: " + targetCustomer.getAddress());
 
         //Lua chon muc can chinh sua
-        System.out.println("Chon muc can chinh sua");
-        System.out.println("1. Ho ten");
-        System.out.println("2. So dien thoai");
-        System.out.println("3. Dia chi");
-        System.out.println("0. Huy");
+        System.out.println("Chọn mục cần chỉnh sửa");
+        System.out.println("1. Họ tên");
+        System.out.println("2. Số điện thoại");
+        System.out.println("3. Địa chỉ");
+        System.out.println("0. Hủy");
         System.out.print("Mời bạn nhập lựa chọn: ");
         int choose = Integer.parseInt(scanner.nextLine());
         switch (choose){
@@ -159,25 +161,69 @@ public class CustomerService {
 
     //Phuong thuc dat lich dich vu
     public void addBooking() {
-        System.out.println("Moi ban nhap id khach hang: ");
+        System.out.println("Mời bạn nhập id khách hàng: ");
         String customerId = scanner.nextLine();
         Customer customer = findCustomerById(customerId);
         if (customer == null) {
-            System.out.println("Ban hay kiem tra lai ma ID khach hang.");
+            System.out.println("Bạn hãy kiểm tra lại mã id khách hàng.");
             return;
         }
-        System.out.println("Moi ban nhap id dich vu: ");
+        System.out.println("Mời bạn nhập id dịch vụ: ");
         String serviceId = scanner.nextLine();
         Service service = findServiceById(serviceId);
         if (service == null) {
-            System.out.println("Ban hay kiem tra lai ma ID dich vu.");
+            System.out.println("Bạn hãy kiểm tra lại mã id dịch vụ.");
             return;
         }
         Booking booking = new Booking(customerId,serviceId);
         bookings.add(booking);
         BookingData.saveBooking(bookings);
-        System.out.println("Ban da dat dich vu thanh cong.");
+        System.out.println("Bạn đã đặt dịch vụ thành công.");
     }
+
+    //Phuong thuc xem danh sach dat lich dich vu
+    public void viewBooking() {
+        System.out.println("Nhập Id khách hàng: ");
+        String customerId = scanner.nextLine();
+        System.out.println("Danh sách đặt lịch dịch vụ: ");
+        for (Booking booking : bookings) {
+            if (booking.getCustomerId().equals(customerId)){
+                System.out.println("Mã đặt lịch dịch vụ: " + booking.getBookingId());
+                System.out.println("Mã dịch vụ: " + booking.getServiceId());
+                System.out.println("Thời gian đặt lịch dịch vụ: " + booking.getBookingDateTime());
+                System.out.println("Trạng thái đặt dịch vụ: " + booking.getStatus());
+            }
+        }
+    }
+
+
+    //Phuong thuc huy dich vu da dat
+    public void cancelBooking() {
+        System.out.println("Nhập id lịch đặt bạn muốn hủy: ");
+        String bookingId = scanner.nextLine();
+        Booking bookingToCancel = null;
+        for (Booking booking : bookings) {
+            if (booking.getBookingId().equals(bookingId)) {
+                bookingToCancel = booking;
+                break;
+            }
+        }
+        // Kiểm tra xem đặt lịch có tồn tại không
+        if (bookingToCancel == null) {
+            System.out.println("Booking ID not found!");
+            return;
+        }
+        // Kiểm tra trạng thái hiện tại của đặt lịch
+        if (bookingToCancel.getStatus() != BookingStatus.BOOKED) {
+            System.out.println("Bạn chỉ có thể hủy khi ở trạng thái BOOKED");
+            return;
+        }
+        bookingToCancel.setStatus(BookingStatus.CANCELED);
+        BookingData.saveBooking(bookings);
+        System.out.println("Bạn đã hủy dịch vụ thành công.");
+
+    }
+
 
     private Customer findCustomerById(String customerId) {
         for (Customer customer : customers) {
@@ -195,4 +241,5 @@ public class CustomerService {
         }
         return null;
     }
+
 }
