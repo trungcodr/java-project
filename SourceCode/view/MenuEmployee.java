@@ -19,7 +19,7 @@ public class MenuEmployee {
             System.out.println("Chào mừng nhân viên, bạn có thể thực hiện công việc sau:");
             System.out.println("1. Xem lịch làm việc ");
             System.out.println("2. Xem lương");
-            System.out.println("3. vvv");
+            System.out.println("3. Xác nhận lịch đặt của khách hàng");
 
             System.out.println("0. Đăng xuất");
             System.out.print("Mời bạn nhập lựa chọn: ");
@@ -33,9 +33,10 @@ public class MenuEmployee {
                         employeeService.viewSalary();
                         break;
                     case 3:
+                        employeeService.confirmBooking();
                         break;
                     case 0:
-                        System.out.println("Đăng xuất thành công");
+                        System.out.println("Đăng xuất thành công.");
                         return;
                     default:
                         System.out.println("Nhập không hợp lệ, mời bạn nhập lại");

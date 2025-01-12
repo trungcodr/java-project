@@ -1,7 +1,10 @@
 package service;
 
+import data.BookingData;
 import data.EmployeeData;
 import data.WorkScheduleData;
+import entities.Booking;
+import entities.BookingStatus;
 import entities.Employee;
 import entities.WorkSchedule;
 
@@ -12,11 +15,12 @@ public class EmployeeService {
     private Scanner scanner;
     private List<WorkSchedule> workSchedules;
     private List<Employee> employees;
-
+    private List<Booking> bookings;
     public EmployeeService() {
         this.scanner = new Scanner(System.in);
         this.workSchedules = WorkScheduleData.loadWorkSchedules();
         this.employees = EmployeeData.loadEmployees();
+        this.bookings = BookingData.loadBookings();
     }
 
     //Xem lich lam viec cua nhan vien
@@ -57,6 +61,30 @@ public class EmployeeService {
         }
     }
 
+    public void confirmBooking() {
+        if (bookings.isEmpty()) {
+            System.out.println("Danh sách đặt lịch trống.");
+        }
+        System.out.println("Danh sách đặt lịch của khách hàng:");
+        for (Booking booking : bookings) {
+            if (booking.getStatus() == BookingStatus.BOOKED) {
+                System.out.println(booking);
+            }
+        }
+        System.out.print("Nhập id đặt lịch để xác nhận: ");
+        String bookingId = scanner.nextLine();
+        Booking booking = findBookingById(bookingId);
+        if (booking == null) {
+            System.out.println("Id đặt lịch không hợp lệ.");
+            return;
+        } else {
+            booking.setStatus(BookingStatus.CONFIRMED);
+            BookingData.saveBooking(bookings);
+            System.out.println("Xác nhận lịch đặt dịch vụ của khách hàng thành công!");
+        }
+
+    }
+
     private Employee findEmployeeById(String employeeId){
         for (Employee employee : employees){
             if (employee.getEmployeeId().equals(employeeId)){
@@ -65,6 +93,13 @@ public class EmployeeService {
         }
         return null;
     }
-
+    private Booking findBookingById(String bookingId) {
+        for (Booking booking : bookings) {
+            if (booking.getBookingId().equals(bookingId)) {
+                return booking;
+            }
+        }
+        return null;
+    }
 
 }

@@ -6,7 +6,7 @@ public class User {
     private String username;
     private String email;
     private String password;
-     private String role;// Admin - Employee - Customer
+    private String role;// Admin - Employee - Customer
 
     public User(String username, String email, String password,String role) {
         this.username = username;
@@ -56,9 +56,8 @@ public class User {
     public static User fromString(String userString) {
         String[] parts = userString.split(",");
         if (parts.length != 4) {
-            throw new IllegalArgumentException("Invalid user string: " + userString);
+            throw new IllegalArgumentException("Dữ liệu không hợp lệ: " + userString);
         }
-
         String username = parts[0];
         String email = parts[1];
         String password = parts[2];

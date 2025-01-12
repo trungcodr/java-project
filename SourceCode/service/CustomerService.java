@@ -161,14 +161,14 @@ public class CustomerService {
 
     //Phuong thuc dat lich dich vu
     public void addBooking() {
-        System.out.println("Mời bạn nhập id khách hàng: ");
+        System.out.print("Mời bạn nhập id khách hàng: ");
         String customerId = scanner.nextLine();
         Customer customer = findCustomerById(customerId);
         if (customer == null) {
             System.out.println("Bạn hãy kiểm tra lại mã id khách hàng.");
             return;
         }
-        System.out.println("Mời bạn nhập id dịch vụ: ");
+        System.out.print("Mời bạn nhập id dịch vụ: ");
         String serviceId = scanner.nextLine();
         Service service = findServiceById(serviceId);
         if (service == null) {
@@ -224,7 +224,7 @@ public class CustomerService {
 
     }
 
-
+    
     private Customer findCustomerById(String customerId) {
         for (Customer customer : customers) {
             if (customer.getCustomerId().equals(customerId)) {

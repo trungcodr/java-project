@@ -62,26 +62,26 @@ public class AdminService  {
         Employee employee = inputEmployeeInfo();
         employees.add(employee);
         EmployeeData.saveEmployees(employees);
-        System.out.println("Them nhan vien moi thanh cong");
+        System.out.println("Thêm nhân viên mới thành công");
     }
 
     public Employee inputEmployeeInfo() {
-        System.out.println("Nhap ten nhan vien: ");
+        System.out.print("Nhập tên nhân viên: ");
         String fullname = scanner.nextLine();
-        System.out.println("Nhap tuoi nhan vien: ");
+        System.out.print("Nhập tuổi nhân viên: ");
         int age = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhap luong nhan vien: ");
+        System.out.print("Nhập lương nhân viên: ");
         BigDecimal salary = new BigDecimal(scanner.nextLine());
         return new Employee(fullname,age,salary);
     }
 
         //Chuc nang thay doi luong nhan vien
     public void modifySalary(String type){
-        System.out.println("Nhap id nhan vien: ");
+        System.out.print("Nhập id nhân viên: ");
         String employeeId = scanner.nextLine();
         Employee employee = findEmployeeById(employeeId);
         if (employee == null) {
-            System.out.println("Khong tim thay nhan vien co id:" + employeeId);
+            System.out.println("Không tìm thấy nhân viên có id:" + employeeId);
             return;
         }
         try {
@@ -91,7 +91,7 @@ public class AdminService  {
             } else if (type.equals("-")){
                 decreaseSalary(employee);
             } else {
-                System.out.println("Lua chon khong hop le.");
+                System.out.println("Lựa chọn không hợp lệ.");
                 return;
             }
             //Luu lich su thay doi luong
@@ -105,14 +105,14 @@ public class AdminService  {
     }
         //Phuong thuc tang luong nhan vien
         private void increaseSalary(Employee employee){
-            System.out.println("Nhap so tien ban muon tang: ");
+            System.out.println("Nhập số tiền bạn muốn tăng: ");
             BigDecimal money = new BigDecimal(scanner.nextLine());
             if (money.compareTo(BigDecimal.ZERO) <= 0) {
-                throw new IllegalArgumentException("So tien luong tang phai lon hon 0.");
+                throw new IllegalArgumentException("Số tiền lương tăng phải lớn hơn 0.");
             }
             BigDecimal newSalary = employee.getSalary().add(money);
             employee.setSalary(newSalary);
-            System.out.println("Tang luong thanh cong!");
+            System.out.println("Tăng lương thành công!");
         }
         //Phuong thuc giam luong nhan vien
         private void decreaseSalary(Employee employee) {
@@ -135,10 +135,10 @@ public class AdminService  {
         //Phuong thuc xem lich su thay doi luong
    public  void viewSalaryHistory() {
        if (salaryHistories.isEmpty()) {
-           System.out.println("Khong co lich su thay doi luong.");
+           System.out.println("Không có lịch sử thay đổi lương.");
            return;
        }
-       System.out.println("--------------------------Lich su thay doi luong-----------------------------");
+       System.out.println("--------------------------Lịch sử thay đổi lương-----------------------------");
        System.out.println("+------------+------------+------------+---------------+---------------------+");
        System.out.println("| ID Nhân viên | Lương cũ  | Lương mới  | Loại thay đổi |  Thời gian         |");
        System.out.println("+------------+------------+------------+---------------+---------------------+");

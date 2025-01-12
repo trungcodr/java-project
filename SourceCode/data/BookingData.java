@@ -24,7 +24,7 @@ public class BookingData {
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length != 5) {
-                    System.out.println("Du lieu khong hop le: " + line);
+                    System.out.println("Dữ liệu không hợp lệ: " + line);
                     continue;
                 }
                 String bookingId = parts[0];

@@ -54,7 +54,7 @@ public class Customer  {
     public static Customer fromString(String customerString) {
         String[] parts = customerString.split(",");
         if (parts.length != 4) {
-            throw new IllegalArgumentException("Invalid customer string: " + customerString);
+            throw new IllegalArgumentException("Dữ liệu không hợp lệ: " + customerString);
         }
         String nameCustomer = parts[1];
         String phone = parts[2];
