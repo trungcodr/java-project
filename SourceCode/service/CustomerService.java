@@ -60,6 +60,7 @@ public class CustomerService {
 
     //Phuong thuc cap nhat thong tin khach hang
     public void updateCustomerInfo(){
+
         System.out.print("Nhập số điện thoại của khách hàng: ");
         String phone = scanner.nextLine();
 
@@ -73,6 +74,7 @@ public class CustomerService {
         }
         if (targetCustomer == null) {
             System.out.println("Không tìm thấy khách hàng với số điện thoại: " + phone);
+            return;
         }
 
         //Hien thi thong tin khach hang hie tai

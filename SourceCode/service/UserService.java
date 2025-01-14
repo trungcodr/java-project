@@ -98,6 +98,7 @@ public class UserService {
         users.add(newUser);
         UserData.saveUsers(users);
         System.out.println("Tạo tài khoản thành công!");
+        System.out.println("------------------------------------");
     }
 
 

@@ -4,3 +4,4 @@ sonmc,sonmc@gmail.com,Sonmc123.,employee
 nguyetmc,nguyetmc@gmail.com,Nguyet123.,employee
 vantung,vantung@gmail.com,Vantung123.,customer
 xuansondeptrai,nguyenxuanson@gmail.com,Vuaphaluoi123.,customer
+thanhchung,thanhchung@gmail.com,Thanhchung123.,customer
