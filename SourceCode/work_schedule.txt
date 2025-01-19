@@ -1,2 +1,3 @@
 E1,2025-01-02,08:00,17:00,Lam viec fulltime
 E2,2025-01-03,08:00,14:00,Lam viec parttime
+E3,2025-02-01,08:00,12:30,Lam viec part time

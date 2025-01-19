@@ -152,7 +152,18 @@ public class AdminService  {
        }
        System.out.println("+------------+------------+------------+---------------+---------------------+");
    }
-
+    // Phuong thuc xem danh sach nhan vien
+    public void viewEmployees() {
+        if (employees.isEmpty()) {
+            System.out.println("Khong co nhan vien nao trong danh sach.");
+        }
+        else {
+            System.out.println("Danh sach nhan vien: ");
+            for (Employee employee : employees) {
+                System.out.println(employee);
+            }
+        }
+    }
 
 
     //Phuong thuc xem danh sach tai khoan

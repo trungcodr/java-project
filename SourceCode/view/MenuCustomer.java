@@ -1,12 +1,9 @@
 package view;
-import data.CustomerData;
-import data.ServiceData;
-import entities.Customer;
-import entities.Service;
+
 
 import service.CustomerService;
 
-import java.util.List;
+
 import java.util.Scanner;
 
 

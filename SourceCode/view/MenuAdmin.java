@@ -117,11 +117,12 @@ public class MenuAdmin {
     //Menu con quan ly nhan vien
     private void manageEmployeeMenu() {
         while (true){
-            System.out.println("");
+            System.out.println("----------------------------------------");
             System.out.println("1. Thêm mới nhân viên");
-            System.out.println("2. Tăng lương");
-            System.out.println("3. Giảm lương");
-            System.out.println("4. Hien thi lich su thay doi luong");
+            System.out.println("2. Xem danh sách nhân viên");
+            System.out.println("3. Tăng lương");
+            System.out.println("4. Giảm lương");
+            System.out.println("5. Hien thi lich su thay doi luong");
             System.out.println("0. Quay lại");
             System.out.print("Mời bạn nhập lựa chọn: ");
 
@@ -131,12 +132,15 @@ public class MenuAdmin {
                     adminService.insertEmployee();
                    break;
                 case 2:
-                    adminService.modifySalary("+");
+                    adminService.viewEmployees();
                     break;
                 case 3:
-                    adminService.modifySalary("-");
+                    adminService.modifySalary("+");
                     break;
                 case 4:
+                    adminService.modifySalary("-");
+                    break;
+                case 5:
                     adminService.viewSalaryHistory();
                     break;
                 case 0:
@@ -151,17 +155,21 @@ public class MenuAdmin {
     //Menu con quan ly lich lam viec
     private void manageWordSchedule(){
         while (true){
-            System.out.println("");
-            System.out.println("1. Thêm lịch làm việc");
-            System.out.println("2. Xem lịch làm việc");
+            System.out.println("-------------------------------------");
+            System.out.println("1. Xem danh sách nhân viên");
+            System.out.println("2. Thêm lịch làm việc");
+            System.out.println("3. Xem lịch làm việc");
             System.out.println("0. Quay lại");
             System.out.print("Mời bạn nhập lựa chọn: ");
             int choose = Integer.parseInt(scanner.nextLine());
             switch (choose){
                 case 1:
-                    adminService.inputWorkScheduleInfo();
+                    adminService.viewEmployees();
                     break;
                 case 2:
+                    adminService.inputWorkScheduleInfo();
+                    break;
+                case 3:
                     adminService.viewWorkSchdule();
                     break;
                 case 0:

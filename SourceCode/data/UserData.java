@@ -1,12 +1,7 @@
 package data;
-
-import entities.Customer;
-import entities.Employee;
 import entities.User;
 
 import java.io.*;
-
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 

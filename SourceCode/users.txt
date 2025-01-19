@@ -5,3 +5,4 @@ nguyetmc,nguyetmc@gmail.com,Nguyet123.,employee
 vantung,vantung@gmail.com,Vantung123.,customer
 xuansondeptrai,nguyenxuanson@gmail.com,Vuaphaluoi123.,customer
 thanhchung,thanhchung@gmail.com,Thanhchung123.,customer
+tadinhthuong,odede2002@gmail.com,Thuong123.,employee

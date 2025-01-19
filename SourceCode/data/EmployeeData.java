@@ -2,7 +2,7 @@ package data;
 
 import entities.Employee;
 
-import javax.imageio.IIOException;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
